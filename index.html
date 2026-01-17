@@ -2,65 +2,90 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Key</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Key Page</title>
 
 <style>
-body {
-    background-color: #0e0e0e;
-    color: white;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #0f0f14, #1a1a24);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+    }
 
-.container {
-    text-align: center;
-}
+    .container {
+        text-align: center;
+        padding: 24px;
+        max-width: 420px;
+        width: 90%;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        backdrop-filter: blur(10px);
+    }
 
-.keybox {
-    background-color: #1b1b1b;
-    padding: 18px 30px;
-    border-radius: 10px;
-    font-size: 18px;
-    cursor: pointer;
-    user-select: none;
-    transition: background-color 0.2s;
-}
+    h1 {
+        margin-bottom: 10px;
+        font-size: 1.6rem;
+        font-weight: 600;
+    }
 
-.keybox:hover {
-    background-color: #242424;
-}
+    p {
+        font-size: 0.95rem;
+        opacity: 0.8;
+        margin-bottom: 20px;
+    }
 
-.status {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #9cff9c;
-    opacity: 0;
-    transition: opacity 0.2s;
-}
+    button {
+        background: #4f7cff;
+        border: none;
+        padding: 14px 22px;
+        border-radius: 10px;
+        font-size: 1rem;
+        color: white;
+        cursor: pointer;
+        transition: background 0.2s ease, transform 0.1s ease;
+    }
+
+    button:hover {
+        background: #3b66e0;
+    }
+
+    button:active {
+        transform: scale(0.96);
+    }
+
+    .status {
+        margin-top: 14px;
+        font-size: 0.85rem;
+        opacity: 0.7;
+    }
 </style>
 </head>
 
 <body>
-
 <div class="container">
-    <div class="keybox" onclick="copyKey()">
-        <strong>Keyy:</strong>
-        <span id="key">Phemonaz.lex-KEY-291&@GSo2!0-482sn</span>
-    </div>
-    <div class="status" id="status">Copied to clipboard</div>
+    <h1>Key Access</h1>
+    <p>Click the button below to copy your key</p>
+    <button onclick="copyKey()">Copy Key</button>
+    <div class="status" id="status"></div>
 </div>
 
 <script>
-function copyKey() {
-    const key = document.getElementById("key").innerText;
-    navigator.clipboard.writeText(key);
-    document.getElementById("status").style.opacity = "1";
-}
-</script>
+    const a = "sn284-0!2oSG@&192-YEK-xel.zanomehP";
+    const key = a.split("").reverse().join("");
 
+    function copyKey() {
+        navigator.clipboard.writeText(key).then(() => {
+            const status = document.getElementById("status");
+            status.textContent = "Key copied to clipboard ✔";
+            setTimeout(() => status.textContent = "", 3000);
+        });
+    }
+</script>
 </body>
 </html>
